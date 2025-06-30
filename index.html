@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>EXPENSE TRACKER</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        roboto: ["Roboto", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="m-0 p-0">
+
+    <div class="container-fluid p-5 min-h-screen flex flex-col items-center">
+
+        <h1 class="text-center text-[44px] font-[Roboto]">Expense Tracker</h1>
+
+        <!-- INPUT FORM -->
+
+        <form id="myForm" class="mt-5 flex flex-row w-full gap-9 justify-center">
+
+            <!-- EXPENSE NAME -->
+            <div class="name">
+                <label for="expName"></label>
+                <input id="expName" class="h-[50px] w-[200px] border-[1px] p-3" type="text" name="expName" placeholder="Expense Name" />
+                <p id="enameErrorMsg" class="text-red-600 text-sm mt-1 ml-2 hidden">* Required</p>
+            </div>
+
+            <!-- AMOUNT -->
+            <div class="amount">
+                <label for="amount"></label>
+                <input id="amount" class="h-[50px] w-[200px] border-[1px] p-3" type="text" name="amount" placeholder="Amount" />
+                <p id="eamountErrorMsg" class="text-red-600 text-sm mt-1 ml-2 hidden">* Required</p>
+            </div>
+
+            <!-- SELECT CATEGORY -->
+            <div class="category">
+                <select id="category" class="border-[1px] p-1 h-[50px] w-[200px]">
+                    <option value="select" selected disabled>Select Catergory</option>
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="electricity">Electricity</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="miscellaneous">Miscellaneous</option>
+                </select>
+                <p id="ecatErrorMsg" class="text-red-600 text-sm mt-1 ml-2 hidden">* Required</p>
+            </div>
+
+            <!-- DATE -->
+            <div class="date">
+                <label for="date"></label>
+                <input id="date" class="h-[50px] w-[200px] border-[1px] p-3" type="date" name="date" />
+                <p id="edateErrorMsg" class="text-red-600 text-sm mt-1 ml-2 hidden">* Required</p>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="date">
+                <button id="submitBtn" class="button h-[50px] w-[110px] bg-green-700 text-white rounded-md" type="submit">
+                    Add Expense
+                </button>
+                <p id="errorMsg" class="hidden">errorMsg</p>
+            </div>
+
+        </form>
+
+        <!-- OUTPUT DATABASE -->
+
+        <div id="outputDatabase" class="flex mt-4">
+
+            <div class="flex flex-col">
+                <div class="expenseName text-center">
+                    <h1 class="expenseName w-[210px] font-bold pl-5 pr-5 p-3 bg-orange-100 border-[1px] border-black">Expense Name</h1>
+                </div>
+
+                <div id="nameoutputDatabaseList" class="flex flex-col mt-4">
+
+                </div>
+            </div>
+            
+
+            <div class="flex flex-col">
+                <div class="amount text-center">
+                    <h1 class="amount w-[210px] font-bold pl-5 pr-5 p-3 bg-orange-100 border-[1px] border-black">Amount</h1>
+                </div>
+
+                <div id="amountoutputDatabaseList" class="flex flex-col mt-4">
+
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="category text-center">
+                    <h1 class="category w-[210px] font-bold pl-5 pr-5 p-3 bg-orange-100 border-[1px] border-black">Category</h1>
+                </div>
+
+                <div id="categoryoutputDatabaseList" class="flex flex-col mt-4">
+
+                </div>
+
+            </div>
+
+            <div class="flex flex-col">
+                <div class="date text-center">
+                    <h1 class="date w-[210px] font-bold pl-5 pr-5 p-3 bg-orange-100 border-[1px] border-black">Date</h1>
+                </div>
+                <div id="dateoutputDatabaseList" class="flex flex-col mt-4">
+
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="action text-center">
+                    <h1 class="action w-[210px] font-bold pl-5 pr-5 p-3 bg-orange-100 border-[1px] border-black">Action</h1>
+                </div>
+
+                <div id="actionoutputDatabaseList" class="flex flex-col mt-4">
+
+                </div>
+            </div>
+
+        </div>
+
+        
+        <!-- TOTAL -->
+        
+        <div class="total">
+            
+            <h1 id="totalH1" class="total font-bold mt-5">TOTAL : <span id="totalSpan" class="totalSpan"></span></h1>
+            
+        </div>
+        
+        <!-- FILTER BY CATEGORY -->
+        
+        <div class="category mt-5 flex ">
+            
+            <div class="pt-[14px] pr-8">
+                <h2>Filter by Category : </h2>
+            </div>
+
+            <select id="categoryFilter" class="border-[1px] p-1 h-[50px] w-[200px]">
+                <option value="select" selected>Select Catergory</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="electricity">Electricity</option>
+                <option value="shopping">Shopping</option>
+                <option value="miscellaneous">Miscellaneous</option>
+            </select>
+        </div>
+        
+        
+
+
+
+
+
+
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
